@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_physics_two_ans"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="edu.washington.mtn217.quizdroid.PhysicsTwoAns">
+
+    <TextView
+        android:text="@+string/physicstwoQ"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/textView6"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+    <TextView
+        android:text="You have x out of 2 correct"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView7"
+        android:layout_above="@+id/button3"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="17dp" />
+
+    <Button
+        android:text="@+string/finish"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/button3"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:layout_marginBottom="107dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView6"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" >
+
+        <RadioButton
+            android:text="@+string/physicstwo1ans"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/radioButton12"
+            android:layout_weight="1" />
+
+        <RadioButton
+            android:text="@+string/physicstwo2ans"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/radioButton11"
+            android:layout_weight="1" />
+
+        <RadioButton
+            android:text="@+string/physicstwo3ans"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/radioButton10"
+            android:layout_weight="1" />
+
+        <RadioButton
+            android:text="@+string/physicstwo4ans"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/radioButton9"
+            android:layout_weight="1" />
+    </RadioGroup>
+</RelativeLayout>

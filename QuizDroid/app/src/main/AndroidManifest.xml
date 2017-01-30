@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="edu.washington.mtn217.quizdroid">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".MathOverview" />
+        <activity android:name=".PhysicsOverview" />
+        <activity android:name=".MarvelOverview" />
+        <activity android:name=".PhysicsOne" />
+        <activity android:name=".PhysicsOneAns" />
+        <activity android:name=".PhysicsTwo" />
+        <activity android:name=".PhysicsTwoAns" />
+        <activity android:name=".MathOne" />
+        <activity android:name=".MathOneAns" />
+        <activity android:name=".MathTwo" />
+        <activity android:name=".MathTwoAns" />
+        <activity android:name=".MarvelOne" />
+        <activity android:name=".MarvelOneAns" />
+        <activity android:name=".MarvelTwo" />
+        <activity android:name=".MarvelTwoAns" />
+        <activity android:name=".MarvelThree" />
+        <activity android:name=".MarvelThreeAns"></activity>
+    </application>
+
+</manifest>
