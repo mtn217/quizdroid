@@ -28,7 +28,8 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="34dp"
         android:id="@+id/button7"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:visibility="invisible" />
 
     <RadioGroup
         android:layout_width="wrap_content"
