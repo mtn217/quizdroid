@@ -12,7 +12,8 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Math Overview" />
+            android:text="Math Overview"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
         <TextView
             android:text="This section of the quiz will have lots of questions about math! There are 2 questions in this section. Click Begin to start the quiz."
