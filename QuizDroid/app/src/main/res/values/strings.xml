@@ -1,10 +1,10 @@
 <resources>
     <string name="app_name">Quiz Droid</string>
+
     <string name="submit">Submit</string>
     <string name="next">Next</string>
     <string name="begin">Begin</string>
     <string name="finish">Finish</string>
-    <string name="result">You have x out of x correct</string>
 
     <!--Physics Q1-->
     <string name="physicsoneQ">1. Why is the sky blue?</string>
@@ -12,13 +12,13 @@
     <string name="physicsone2ans">Reflection off of the ocean</string>
     <string name="physicsone3ans">The sky is not really blue</string>
     <string name="physicsone4ans">The sun produces blue color</string>
-
     <!--Physics Q2-->
     <string name="physicstwoQ">2. Why causes water to be hot?</string>
     <string name="physicstwo1ans">Rapid movement of water particles</string>
     <string name="physicstwo2ans">Water is powered by the sun</string>
     <string name="physicstwo3ans">Because there are no ice cubes</string>
     <string name="physicstwo4ans">To stop babies from touching it</string>
+
 
     <!--Math Q1-->
     <string name="mathoneQ">1. What is 4 x 4?</string>
@@ -42,15 +42,17 @@
     <string name="marvelone4ans">Captain America</string>
     <!--Marvel Q2-->
     <string name="marveltwoQ">2. Which superhero was bit by a spider?</string>
-    <string name="marveltwo1ans">Spiderman</string>
     <string name="marveltwo2ans">Cyclops</string>
     <string name="marveltwo3ans">Venom</string>
     <string name="marveltwo4ans">Wolverine</string>
-    <!--Marvel Q3-->
-    <string name="marvelthreeQ">3. Who is the coolest?</string>
-    <string name="marvelthree1ans">Daredevil</string>
-    <string name="marvelthree2ans">Luke Cage</string>
-    <string name="marvelthree3ans">Black Widow</string>
-    <string name="marvelthree4ans">Captain Marvel</string>
+
+
+    <!--Answer display-->
+    <string name="one">"You have 0 out of 1 correct"</string>
+    <string name="oneCorrect">"You have 1 out of 1 correct"</string>
+
+    <string name="two">"You have 0 out of 2 correct"</string>
+    <string name="oneOftwo">"You have 1 out of 2 correct"</string>
+    <string name="allTwo">"You have 2 out of 2 correct"</string>
 
 </resources>

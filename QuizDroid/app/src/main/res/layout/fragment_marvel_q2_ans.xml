@@ -1,0 +1,60 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="edu.washington.mtn217.quizdroid.MarvelQ2Ans">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/marvelTwo">
+
+            <RadioButton
+                android:text="@+string/marvelone3ans"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/radioButton20"
+                android:layout_weight="1" />
+
+            <RadioButton
+                android:text="@+string/marveltwo2ans"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/radioButton19"
+                android:layout_weight="1" />
+
+            <RadioButton
+                android:text="@+string/marveltwo3ans"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/radioButton18"
+                android:layout_weight="1" />
+
+            <RadioButton
+                android:text="@+string/marveltwo4ans"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/radioButton17"
+                android:layout_weight="1" />
+        </RadioGroup>
+
+        <TextView
+            android:text="You got x out of 2 correct"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView11"
+            android:visibility="invisible" />
+
+        <Button
+            android:text="@+string/submit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/button8"
+            android:visibility="invisible" />
+    </LinearLayout>
+</FrameLayout>

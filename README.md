@@ -1,3 +1,0 @@
-# quizdroid
-
-testing out branch
