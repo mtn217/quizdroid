@@ -40,8 +40,8 @@ public class MarvelOverview extends Fragment implements View.OnClickListener {
 
         FragmentManager fragmentManager = getFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.fragment_placeholder, marvelOneAns);
-        fragmentTransaction.replace(R.id.fragment_other, marvelOne);
+        fragmentTransaction.replace(R.id.fragment_placeholder, marvelOne);
+        fragmentTransaction.replace(R.id.fragment_other, marvelOneAns);
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
     }
