@@ -54,6 +54,19 @@
     <string name="marvelthree3ans">Black Widow</string>
     <string name="marvelthree4ans">Captain Marvel</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!--Answer display-->
+    <string name="one">"You got 0 out of 1 correct"</string>
+    <string name="oneCorrect">"You got 1 out of 1 correct"</string>
+
+    <string name="two">"You got 0 out of 2 correct"</string>
+    <string name="oneOftwo">"You got 1 out of 2 correct"</string>
+    <string name="allTwo">"You got 2 out of 2 correct"</string>
+
+    <string name="zeroThree">"You got 0 out of 3 correct"</string>
+    <string name="oneThree">"You got 1 out of 3 correct"</string>
+    <string name="twoThree">"You got 2 out of 3 correct"</string>
+    <string name="allThree">"You got 3 out of 3 correct"</string>
+
 </resources>

@@ -1,6 +1,5 @@
 package edu.washington.mtn217.quizdroid;
 
-
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.graphics.Color;
@@ -18,17 +17,18 @@ import android.widget.TextView;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class Math1AnsFragment extends Fragment implements View.OnClickListener {
-    RadioGroup mathOne;
+public class PhysQ1Ans extends Fragment implements View.OnClickListener {
+    RadioGroup physicsOne;
     Button submit;
     View view;
-    Fragment mathTwo;
-    Fragment mathTwoAns;
+    Fragment physicsTwo;
+    Fragment physicsTwoAns;
     TextView result;
     int correctAns;
     RadioButton ans;
 
-    public Math1AnsFragment() {
+
+    public PhysQ1Ans() {
         // Required empty public constructor
     }
 
@@ -36,19 +36,20 @@ public class Math1AnsFragment extends Fragment implements View.OnClickListener {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        view = inflater.inflate(R.layout.fragment_math1_ans, container, false);
+        view = inflater.inflate(R.layout.fragment_phys_q1_ans, container, false);
 
-        mathOne = (RadioGroup) view.findViewById(R.id.mathOne);
-        submit = (Button) view.findViewById(R.id.button4);
-        result = (TextView) view.findViewById(R.id.textView5);
+        physicsOne = (RadioGroup) view.findViewById(R.id.physicsOne);
+        submit = (Button) view.findViewById(R.id.button5);
+        result = (TextView) view.findViewById(R.id.ansText);
         submit.setOnClickListener(this);
-        mathOne.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+        physicsOne.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
                 ans = (RadioButton) radioGroup.findViewById(i);
                 submit.setVisibility(View.VISIBLE);
             }
         });
+
         return view;
     }
 
@@ -56,29 +57,29 @@ public class Math1AnsFragment extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         if(submit.getText().toString().equals(getString(R.string.submit))) {
             submit.setText(getString(R.string.next));
-            if (ans.getId() == 2131427423) {
+            if (ans.getId() == 2131427440) { //change number
                 ans.setTextColor(Color.GREEN);
                 result.setText(getString(R.string.oneCorrect));
                 correctAns++;
             } else {
                 ans.setTextColor(Color.RED);
-                RadioButton correct = (RadioButton) mathOne.findViewById(R.id.radioButton2);
+                RadioButton correct = (RadioButton) physicsOne.findViewById(R.id.radioButton8);
                 correct.setTextColor(Color.GREEN);
                 result.setText(getString(R.string.one));
             }
             result.setVisibility(View.VISIBLE);
         } else {
-            mathTwo = new MathTwoFragment();
-            mathTwoAns = new Math2Ans();
+            physicsTwo = new PhysQ2();
+            physicsTwoAns = new PhysQ2Ans();
 
             Bundle args = new Bundle();
             args.putInt("correctAns", correctAns);
-            mathTwoAns.setArguments(args);
+            physicsTwoAns.setArguments(args);
 
             FragmentManager fragmentManager = getFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.fragment_placeholder, mathTwo);
-            fragmentTransaction.replace(R.id.fragment_other, mathTwoAns);
+            fragmentTransaction.replace(R.id.fragment_placeholder, physicsTwo);
+            fragmentTransaction.replace(R.id.fragment_other, physicsTwoAns);
             fragmentTransaction.addToBackStack(null);
             fragmentTransaction.commit();
         }

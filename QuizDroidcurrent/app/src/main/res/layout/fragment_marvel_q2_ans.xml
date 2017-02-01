@@ -2,14 +2,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="edu.washington.mtn217.quizdroid.MathTwoFragment">
+    tools:context="edu.washington.mtn217.quizdroid.MarvelQ2Ans">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/mathtwoQ"
-        android:id="@+id/textView4"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+        android:text="@string/hello_blank_fragment" />
 
 </FrameLayout>
