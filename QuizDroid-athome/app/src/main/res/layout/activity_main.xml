@@ -10,11 +10,6 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="edu.washington.mtn217.quizdroid.MainActivity">
 
-    <!--<android.support.v7.widget.RecyclerView-->
-        <!--android:id="@+id/recycleView"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent"/>-->
-    
     <TextView
         android:text="TextView"
         android:layout_width="wrap_content"
@@ -26,4 +21,14 @@
         android:layout_marginStart="108dp"
         android:layout_marginTop="29dp"
         android:id="@+id/textView" />
+
+    <FrameLayout
+        android:id="@+id/fragment_placeholder"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+    </FrameLayout>
 </RelativeLayout>
