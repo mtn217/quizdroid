@@ -87,7 +87,6 @@ public class QuizApp extends Application {
 //        scienceAnsTwo.add("The X-Institute");
 //        scienceAnsTwo.add("Erik Lensherr");
 //        int scienceCorrectTwo = 2;
-        //Create other Question object
 
         //Create Topic object with the question objects
 
