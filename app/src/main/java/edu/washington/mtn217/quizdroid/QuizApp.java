@@ -2,10 +2,17 @@ package edu.washington.mtn217.quizdroid;
 
 import android.app.Application;
 import android.os.Bundle;
+import android.util.JsonReader;
 import android.util.Log;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
+import android.content.Context;
+
+import com.google.gson.JsonParser;
 
 import edu.washington.mtn217.quizdroid.R;
 
@@ -19,6 +26,7 @@ public class QuizApp extends Application {
     private TopicRepository topicsRepository;
     private String mathTitle, mathShort, mathLong, marvelTitle, marvelShort, marvelLong, scienceLong,
                     scienceShort, scienceTitle;
+    private Context context;
 
     public static QuizApp getInstance() {
         return instance;
@@ -31,66 +39,141 @@ public class QuizApp extends Application {
         instance = this;
         topicsRepository = new HardCodedRepository();
 
-        mathTitle = "Mathematics";
-        mathShort = "Did you pass the third grade?";
-        mathLong = "Did you pass the third grade? This topic has 1 question.";
+        context = this.getApplicationContext();
 
-        String mathOne = "What is 2+2 ?";
-        String mathOneAns = "4";
-        String mathOneAnsTwo = "22";
-        String mathOneAnsThree = "An irrational number";
-        String mathOneAnsFour = "Nobody knows";
-        int mathCorrect = 1;
-        Question mathOneQ = new Question(mathOne, mathOneAns, mathOneAnsTwo, mathOneAnsThree, mathOneAnsFour, mathCorrect);
+        String filePath = context.getFilesDir() + "/" + "questions.json";
+        Log.i("ListActivity", filePath);
+        File jsonFile = new File(filePath);
 
-        List<Question> allMath = new ArrayList<Question>();
-        allMath.add(mathOneQ);
-        setup(mathTitle, mathShort, mathLong, allMath);
+//        FileInputStream fis = openFileInput(jsonFile);
+//        JsonReader jsonReader = new JsonReader(new InputStreamReader(fis));
+//        ArrayList<Topic> topicsList = JsonParser.readJson(jsonReader);
+//        topicsRepository.addAlltopics(topicsList);
+//        jsonReader.close();
+//        fis.close();
 
+    }
 
+    public TopicRepository getRepository() {
+        if (topicsRepository == null) {
+            topicsRepository = HardCodedRepository.getInstance();
+        }
+        return topicsRepository;
+    }
 
-        marvelTitle = "Marvel Super Heroes";
-        marvelShort = "Avengers, Assemble!";
-        marvelLong = "Avengers, Assemble! This section has 2 questions";
-
-        String marvelOne = "Who is Iron Man?";
-        String marvelAnsOne = "Tony Stark";
-        String marvelAnsTwo = "Obadiah Stane";
-        String marvelAnsThree = "A rock hit by Megadeth";
-        String marvelAnsFour = "Nobody knows";
-        int marvelCorrect = 1;
-        Question marvelOneQ = new Question(marvelOne, marvelAnsOne, marvelAnsTwo, marvelAnsThree, marvelAnsFour, marvelCorrect);
-
-        String marvelTwo = "Who founded the X-Men?";
-        String marvelTwoAnsOne = "Professor X";
-        String marvelTwoAnsTwo = "Tony Stark";
-        String marvelTwoAnsThree = "The X-Institute";
-        String marvelTwoAnsFour = "Erik Lensherr";
-        int marvelTwoCorrect = 2;
-        Question marvelTwoQ = new Question(marvelTwo, marvelTwoAnsOne, marvelTwoAnsTwo, marvelTwoAnsThree, marvelTwoAnsFour, marvelTwoCorrect);
-
-        List<Question> allMarvel = new ArrayList<Question>();
-        allMarvel.add(marvelOneQ);
-        allMarvel.add(marvelTwoQ);
-        setup(marvelTitle, marvelShort, marvelLong, allMarvel);
+    public void setup(String title, String shortDescr, String longDescr, List<Question> questions) {
+        Topic currentTopic = new Topic(title, shortDescr, longDescr, questions);
+        topicsRepository.addTopic(currentTopic);
+    }
+}
 
 
 
-        scienceTitle = "Science!";
-        scienceShort = "Because SCIENCE!";
-        scienceLong = "Because SCIENCE! This topic has 1 question.";
-        String scienceOne = "What is fire?";
+/*
+package edu.washington.mtn217.quizdroid;
 
-        String scienceAnsOne = "One of the four classical elements";
-        String scienceAnsTwo = "A magical reaction given to us by God";
-        String scienceAnsThree = "A band that hasn't yet been discovered";
-        String scienceAnsFour = "Fire! Fire! Fire! heh-heh";
-        int scienceCorrect = 1;
-        Question scienceQ = new Question(scienceOne, scienceAnsOne, scienceAnsTwo, scienceAnsThree, scienceAnsFour, scienceCorrect);
+import android.app.Application;
+import android.os.Bundle;
+import android.util.Log;
 
-        List<Question> allScience = new ArrayList<Question>();
-        allScience.add(scienceQ);
-        setup(scienceTitle, scienceShort, scienceLong, allScience);
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+import android.content.Context;
+
+import edu.washington.mtn217.quizdroid.R;
+
+/**
+ * Created by Michael on 2/12/2017.
+
+
+public class QuizApp extends Application {
+    private static final String TAG = "QuizApp";
+    private static QuizApp instance = new QuizApp();
+    private TopicRepository topicsRepository;
+    private String mathTitle, mathShort, mathLong, marvelTitle, marvelShort, marvelLong, scienceLong,
+            scienceShort, scienceTitle;
+    private Context context;
+
+    public static QuizApp getInstance() {
+        return instance;
+    }
+
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        instance = this;
+        topicsRepository = new HardCodedRepository();
+
+//        mathTitle = "Mathematics";
+//        mathShort = "Did you pass the third grade?";
+//        mathLong = "Did you pass the third grade? This topic has 1 question.";
+//
+//        String mathOne = "What is 2+2 ?";
+//        String mathOneAns = "4";
+//        String mathOneAnsTwo = "22";
+//        String mathOneAnsThree = "An irrational number";
+//        String mathOneAnsFour = "Nobody knows";
+//        int mathCorrect = 1;
+//        Question mathOneQ = new Question(mathOne, mathOneAns, mathOneAnsTwo, mathOneAnsThree, mathOneAnsFour, mathCorrect);
+//
+//        List<Question> allMath = new ArrayList<Question>();
+//        allMath.add(mathOneQ);
+//        setup(mathTitle, mathShort, mathLong, allMath);
+//
+//
+//
+//        marvelTitle = "Marvel Super Heroes";
+//        marvelShort = "Avengers, Assemble!";
+//        marvelLong = "Avengers, Assemble! This section has 2 questions";
+//
+//        String marvelOne = "Who is Iron Man?";
+//        String marvelAnsOne = "Tony Stark";
+//        String marvelAnsTwo = "Obadiah Stane";
+//        String marvelAnsThree = "A rock hit by Megadeth";
+//        String marvelAnsFour = "Nobody knows";
+//        int marvelCorrect = 1;
+//        Question marvelOneQ = new Question(marvelOne, marvelAnsOne, marvelAnsTwo, marvelAnsThree, marvelAnsFour, marvelCorrect);
+//
+//        String marvelTwo = "Who founded the X-Men?";
+//        String marvelTwoAnsOne = "Professor X";
+//        String marvelTwoAnsTwo = "Tony Stark";
+//        String marvelTwoAnsThree = "The X-Institute";
+//        String marvelTwoAnsFour = "Erik Lensherr";
+//        int marvelTwoCorrect = 2;
+//        Question marvelTwoQ = new Question(marvelTwo, marvelTwoAnsOne, marvelTwoAnsTwo, marvelTwoAnsThree, marvelTwoAnsFour, marvelTwoCorrect);
+//
+//        List<Question> allMarvel = new ArrayList<Question>();
+//        allMarvel.add(marvelOneQ);
+//        allMarvel.add(marvelTwoQ);
+//        setup(marvelTitle, marvelShort, marvelLong, allMarvel);
+//
+//
+//
+//        scienceTitle = "Science!";
+//        scienceShort = "Because SCIENCE!";
+//        scienceLong = "Because SCIENCE! This topic has 1 question.";
+//        String scienceOne = "What is fire?";
+//
+//        String scienceAnsOne = "One of the four classical elements";
+//        String scienceAnsTwo = "A magical reaction given to us by God";
+//        String scienceAnsThree = "A band that hasn't yet been discovered";
+//        String scienceAnsFour = "Fire! Fire! Fire! heh-heh";
+//        int scienceCorrect = 1;
+//        Question scienceQ = new Question(scienceOne, scienceAnsOne, scienceAnsTwo, scienceAnsThree, scienceAnsFour, scienceCorrect);
+//
+//        List<Question> allScience = new ArrayList<Question>();
+//        allScience.add(scienceQ);
+//        setup(scienceTitle, scienceShort, scienceLong, allScience);
+
+        context = this.getApplicationContext();
+
+        String filePath = context.getFilesDir() + "/" + "questions.json";
+        Log.i("ListActivity", filePath);
+        File file = new File(filePath);
+
+
     }
 
 //    public void setupTopic(String title, String shortDescr, String longDescr, List<String> questions, List<String> answers, int correctAns) {
@@ -134,3 +217,5 @@ public class QuizApp extends Application {
         topicsRepository.addTopic(currentTopic);
     }
 }
+
+ */

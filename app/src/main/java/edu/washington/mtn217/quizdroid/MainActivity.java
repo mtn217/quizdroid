@@ -19,6 +19,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
+import android.os.Environment;
 
 public class MainActivity extends AppCompatActivity {
     private int answered;
@@ -28,6 +29,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        if(isExternalStorageWritable()) {
+            Log.i("MainActivity", "File root: " + android.os.Environment.getExternalStorageDirectory().getAbsolutePath());
+        }
+
+
         answered = 0;
         correct = 0;
         Intent intent = getIntent();
@@ -35,7 +42,6 @@ public class MainActivity extends AppCompatActivity {
 
         Gson gson = new Gson();
         Topic chosenTopic = gson.fromJson(json, Topic.class);
-        Log.i("MainActivity", chosenTopic.getTitle());
 
         Fragment fragToDisplay = new Overview();
 
@@ -58,5 +64,14 @@ public class MainActivity extends AppCompatActivity {
 
     public void addCorrect() {
         correct++;
+    }
+
+
+    public boolean isExternalStorageWritable() {
+        String state = Environment.getExternalStorageState();
+        if (Environment.MEDIA_MOUNTED.equals(state)) {
+            return true;
+        }
+        return false;
     }
 }

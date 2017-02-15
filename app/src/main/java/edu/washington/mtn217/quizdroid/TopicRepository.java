@@ -13,5 +13,7 @@ public interface TopicRepository {
 
     public void addTopic(Topic newTop);
 
+    public void addAlltopics(List<Topic> topicList);
+
     public void removeTopic(Topic topicToRemove);
 }

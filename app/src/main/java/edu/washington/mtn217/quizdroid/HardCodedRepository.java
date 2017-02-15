@@ -26,6 +26,12 @@ public class HardCodedRepository implements TopicRepository {
         topics.add(newTop);
     }
 
+    public void addAllTopics(List<Topic> topicList) {
+        for (Topic current : topicList) {
+            topics.add(current);
+        }
+    }
+
     public List<Topic> getAllTopics() {
         return topics;
     }
