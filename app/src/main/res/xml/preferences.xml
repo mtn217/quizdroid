@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <EditTextPreference
+        android:defaultValue="http://tednewardsandbox.site44.com/questions.json"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:title="Quiz Data URL"
+        android:key="@string/url" />
+    <EditTextPreference
+        android:defaultValue="5"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:title="Download Time Interval (minutes)"
+        android:key="@string/time"
+        android:inputType="number" />
+</PreferenceScreen>

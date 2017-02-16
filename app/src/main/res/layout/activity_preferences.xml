@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_preferences"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="edu.washington.mtn217.quizdroid.Preferences"
+    android:orientation="vertical">
+
+    <!--<TextView-->
+        <!--android:text="QuizDroid's Settings"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:id="@+id/textView9" />-->
+
+    <!--<TextView-->
+        <!--android:text="Current URL:\nhttp://tednewardsandbox.site44.com/questions.json"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:id="@+id/textView10" />-->
+
+    <!--<TextView-->
+        <!--android:text="Current Download Check:\n5 minutes"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:id="@+id/textView11" />-->
+
+    <!--<TextView-->
+        <!--android:text="CHANGE SETTINGS"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:id="@+id/textView12" />-->
+
+    <!--<TextView-->
+        <!--android:text="New URL"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:id="@+id/textView13" />-->
+
+    <!--<EditText-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:inputType="textPersonName"-->
+        <!--android:ems="10"-->
+        <!--android:id="@+id/editText"-->
+        <!--android:hint="example.com/test.json" />-->
+
+    <!--<TextView-->
+        <!--android:text="New Time Interval (minutes)"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:id="@+id/textView14" />-->
+
+    <!--<EditText-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:inputType="number"-->
+        <!--android:ems="10"-->
+        <!--android:id="@+id/editText3"-->
+        <!--android:hint="5" />-->
+
+    <!--<Button-->
+        <!--android:text="Save Changes"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:id="@+id/button3" />-->
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@android:id/list" />
+</LinearLayout>
