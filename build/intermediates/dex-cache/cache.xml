@@ -7,7 +7,7 @@
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="1c76495e69b7e6728c07cf4263da0d0c683eca52">
+        sha1="6bae2ef8fee83aff87dcd760e23694ae844d0493">
         <dex dex="C:\Users\Michael\Desktop\quizdroid\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_2dd4e6680a514a9bfa77c78d74a4def2f10ef307\classes.dex" />
     </item>
     <item
@@ -34,7 +34,7 @@
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="cd826e3f2bf799439438036be6f66e7d84b74d0d">
+        sha1="ba96c5c03d3470698933a9fce3979c2491150850">
         <dex dex="C:\Users\Michael\Desktop\quizdroid\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_ccb90500e0da49dc082dcf66b3322cfa9adf86be\classes.dex" />
     </item>
     <item

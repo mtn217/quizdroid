@@ -47,10 +47,8 @@ import edu.washington.mtn217.quizdroid.R;
  */
 
 public class QuizApp extends Application {
-    private static final String TAG = "QuizApp";
     private static QuizApp instance = new QuizApp();
     private TopicRepository topicsRepository;
-    String URL = "http://tednewardsandbox.site44.com/questions.json";
 
     public static QuizApp getInstance() {
         return instance;
@@ -61,43 +59,9 @@ public class QuizApp extends Application {
         super.onCreate();
         instance = this;
 
-//        DownloadService.startOrStopAlarm(this, true);
-
-//        topicsRepository = new HardCodedRepository();
-//        String json = null;
-//        String FILE_NAME = "questions.json";
-//        File file = new File(Environment.DIRECTORY_DOWNLOADS, "/" + FILE_NAME);
-//        File file2 = new File(getApplicationContext().getFilesDir(), FILE_NAME);
-//        if (file1.exists()) {
-//            try {
-//                FileInputStream topics = openFileInput("questions.json");
-//                json = readJSONFile(topics);
-//                JSONArray data = new JSONArray(json);
-//                createTopicsJson(data);
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            } catch (JSONException e) {
-//                e.printStackTrace();
-//            }
-//        }
-
-
-        topicsRepository = new HardCodedRepository();
-
-        //String path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath();
-        //path = path + "/questions.json";
-        //Log.i("path", path);
-
         String json = null;
-
-        //File file = new File(getExternalFilesDir(null), "questions.json");
         try {
-            //File file = new File(path);
-            //FileInputStream fileInputStream = new FileInputStream(file);
-
             InputStream inputStream = getAssets().open("questions.json");
-            //open questions.json in Downloads
-
             json = readJSONFile(inputStream);
             JSONArray data = new JSONArray(json);
             createTopicsJson(data);
@@ -118,10 +82,9 @@ public class QuizApp extends Application {
 
     public void createTopicsJson(JSONArray data) {
         try {
+            topicsRepository = new HardCodedRepository();
             for (int i = 0; i < data.length(); i++) {
-                //Log.i("data", data.get(i).toString());
                 JSONObject topicData = (JSONObject) data.get(i);
-
 
                 String title = topicData.getString("title");
                 String descr = topicData.getString("desc");
@@ -162,17 +125,3 @@ public class QuizApp extends Application {
         topicsRepository.addTopic(currentTopic);
     }
 }
-
-
-
-//  context = this.getApplicationContext();
-//        String filePath = context.getFilesDir() + "/" + "questions.json";
-//        Log.i("ListActivity", filePath);
-//        File jsonFile = new File(filePath);
-//
-////        FileInputStream fis = openFileInput(jsonFile);
-////        JsonReader jsonReader = new JsonReader(new InputStreamReader(fis));
-////        ArrayList<Topic> topicsList = JsonParser.readJson(jsonReader);
-////        topicsRepository.addAlltopics(topicsList);
-////        jsonReader.close();
-////        fis.close();

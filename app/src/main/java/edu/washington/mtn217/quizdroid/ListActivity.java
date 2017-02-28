@@ -1,13 +1,17 @@
 package edu.washington.mtn217.quizdroid;
 
+import android.app.AlarmManager;
 import android.app.AlertDialog;
 import android.app.DownloadManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.Uri;
 import android.os.Environment;
+import android.preference.PreferenceManager;
 import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -37,37 +41,10 @@ public class ListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
 
-
         if(checkInternetConnection()) {
-            QuizApp quizApp = QuizApp.getInstance();
-            TopicRepository repository = quizApp.getRepository();
-            topicList = repository.getAllTopics();
 
-            MyAdapter adapter = new MyAdapter(this, topicList);
-
-            ListView quizCategory = (ListView) findViewById(R.id.listView);
-            quizCategory.setAdapter(adapter);
-
-            TextView msg = (TextView) findViewById(R.id.textView7);
-            msg.setVisibility(View.INVISIBLE);
-
-            quizCategory.setOnItemClickListener(new AdapterView.OnItemClickListener(){
-                @Override
-                public void onItemClick(AdapterView<?> a, View v, int position, long id) {
-                    Topic selectedTopic = topicList.get(position);
-                    Gson gson = new Gson();
-                    String json = gson.toJson(selectedTopic);
-
-                    Intent intent = new Intent(ListActivity.this, MainActivity.class);
-                    intent.putExtra(MESSAGE, json);
-                    startActivity(intent);
-                }
-            });
         } else {
             if(isAirplaneModeOn(this)) {
-                Log.i("QuizApp", "airplane mode");
-                // Ask to turn airplane mode off and then take user to Settings activity to do so
-
                 AlertDialog alertBuilder = new AlertDialog.Builder(ListActivity.this).create();
                 alertBuilder.setMessage("Do you want to turn airplane mode off to download data for QuizDroid app?");
                 alertBuilder.setTitle("No Internet Access");
@@ -87,7 +64,7 @@ public class ListActivity extends AppCompatActivity {
 
             } else {
                 AlertDialog alert = new AlertDialog.Builder(ListActivity.this).create();
-                alert.setMessage("You need to be connected to the internet to download the data for QuizDroid app.");
+                alert.setMessage("You have no internet signal right now.");
                 alert.setTitle("No Internet Access");
                 // Add the buttons
                 alert.setButton(AlertDialog.BUTTON_POSITIVE, "Ok", new DialogInterface.OnClickListener() {
@@ -98,6 +75,49 @@ public class ListActivity extends AppCompatActivity {
                 alert.show();
             }
         }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        setContentView(R.layout.activity_list);
+
+
+        if(checkInternetConnection()) {
+            SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
+            String intervalString = sharedPref.getString("TIME", "5");
+            int interval = Integer.parseInt(intervalString);
+
+            Intent intent = new Intent(ListActivity.this, AlarmReceiver.class);
+            PendingIntent pi = PendingIntent.getBroadcast(ListActivity.this, 0, intent, 0);
+            AlarmManager manager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+            stopService(intent);
+            manager.cancel(pi);
+
+            PendingIntent pendingIntent = PendingIntent.getBroadcast(ListActivity.this, 0, intent, 0);
+            manager.setInexactRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis(), interval * 60000, pendingIntent);
+        }
+
+        QuizApp quizApp = QuizApp.getInstance();
+        TopicRepository repository = quizApp.getRepository();
+        topicList = repository.getAllTopics();
+
+        MyAdapter adapter = new MyAdapter(this, topicList);
+        ListView quizCategory = (ListView) findViewById(R.id.listView);
+        quizCategory.setAdapter(adapter);
+
+        quizCategory.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+            @Override
+            public void onItemClick(AdapterView<?> a, View v, int position, long id) {
+            Topic selectedTopic = topicList.get(position);
+            Gson gson = new Gson();
+            String json = gson.toJson(selectedTopic);
+
+            Intent intent = new Intent(ListActivity.this, MainActivity.class);
+            intent.putExtra(MESSAGE, json);
+            startActivity(intent);
+            }
+        });
 
     }
 
