@@ -34,8 +34,6 @@ public class AlarmReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        Log.i("AlarmReceiver", "entered onReceive() from AlarmReceiver");
-
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
         String url = sharedPref.getString("URL", "http://tednewardsandbox.site44.com/questions.json");
         Toast.makeText(context, "Downloading JSON file from " + url, Toast.LENGTH_LONG).show();
